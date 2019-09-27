@@ -22,6 +22,7 @@ public class ArrowHeadControl : MonoBehaviour
         if (other.gameObject.tag == "Target")
         {
             theArrowHolder.tfFlying = false;
+            GameObject.Find("EffectAudio").GetComponent<AudioControl>().PlayHit();
         }
     }
 }

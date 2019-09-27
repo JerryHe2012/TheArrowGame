@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ConfigableBoard : MonoBehaviour
 {
+    public bool tfRotateByAngle = true;
+    public float rotateAngle = 45.0f;
     public float rotateSpeed = 100.0f;
 
     private MouseManager theMouse;
@@ -35,6 +37,15 @@ public class ConfigableBoard : MonoBehaviour
                 gameObject.transform.rotation = Quaternion.identity;
                 tfFirstGrab = false;
             }
+            GameObject theButton = GameObject.Find("RotationButton");
+            if (theButton.GetComponent<RotationButtonControl>().tfFixedRotation)
+            {
+                tfRotateByAngle = true;
+            }
+            else
+            {
+                tfRotateByAngle = false;
+            }
             moveOffset = gameObject.transform.position - theMouse.GetMousePosition();
         }        
     }
@@ -52,14 +63,28 @@ public class ConfigableBoard : MonoBehaviour
         if (theMouse.tfHolding && gameObject == theMouse.holdingObj)
         {
             gameObject.transform.position = theMouse.GetMousePosition() + moveOffset;
-            if (Input.GetKey(KeyCode.Q))
+            if (tfRotateByAngle)
             {
-                gameObject.transform.eulerAngles = new Vector3(0, gameObject.transform.eulerAngles.y - rotateSpeed * Time.deltaTime, 0);
+                if (Input.GetKeyDown(KeyCode.Q))
+                {
+                    gameObject.transform.eulerAngles = new Vector3(0, gameObject.transform.eulerAngles.y - rotateAngle, 0);
+                }
+                else if (Input.GetKeyDown(KeyCode.E))
+                {
+                    gameObject.transform.eulerAngles = new Vector3(0, gameObject.transform.eulerAngles.y + rotateAngle, 0);
+                }
             }
-            else if (Input.GetKey(KeyCode.E))
+            else
             {
-                gameObject.transform.eulerAngles = new Vector3(0, gameObject.transform.eulerAngles.y + rotateSpeed * Time.deltaTime, 0);
-            }
+                if (Input.GetKey(KeyCode.Q))
+                {
+                    gameObject.transform.eulerAngles = new Vector3(0, gameObject.transform.eulerAngles.y - rotateSpeed * Time.deltaTime, 0);
+                }
+                else if (Input.GetKey(KeyCode.E))
+                {
+                    gameObject.transform.eulerAngles = new Vector3(0, gameObject.transform.eulerAngles.y + rotateSpeed * Time.deltaTime, 0);
+                }
+            }            
         }        
     }
 }

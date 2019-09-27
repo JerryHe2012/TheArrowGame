@@ -7,7 +7,9 @@ public class ArrowMoving : MonoBehaviour
     public float speed = 10;
     public bool tfFlying = true;
     public bool tfMouseSetting = true;
-    public bool tfReset = false;
+
+    [SerializeField]
+    private float speedScale = 10.0f;
 
     private MouseManager theMouse;
     private Quaternion originalRotation;
@@ -29,23 +31,30 @@ public class ArrowMoving : MonoBehaviour
             gameObject.transform.LookAt(mousePosition);
             gameObject.transform.eulerAngles = new Vector3(0, gameObject.transform.eulerAngles.y + 180.0f, 0);
 
-            speed = Vector3.Distance(mousePosition, gameObject.transform.position) * 1.0f;
+            speed = Vector3.Distance(mousePosition, gameObject.transform.position) * speedScale;
             if (Input.GetMouseButtonDown(1))
             {
                 tfFlying = true;
                 tfMouseSetting = false;
+                GameObject.Find("EffectAudio").GetComponent<AudioControl>().PlayBow();
+            }
+        }
+        else
+        {
+            if (gameObject == GameObject.Find("ArrowSpawn").GetComponent<ArrowSpawning>().previousObject)
+            {
+                if (Input.GetKeyDown(KeyCode.R))
+                {
+                    gameObject.transform.rotation = originalRotation;
+                    gameObject.transform.position = originalPosition;
+                    tfMouseSetting = true;
+                }
             }
         }
 
         if (tfFlying)
         {
             gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, (gameObject.transform.position + gameObject.transform.forward), speed * Time.deltaTime);
-        }
-        if (tfReset)
-        {
-            gameObject.transform.rotation = originalRotation;
-            gameObject.transform.position = originalPosition;
-            tfReset = false;
         }
     }
 
@@ -55,6 +64,7 @@ public class ArrowMoving : MonoBehaviour
         {
             float difference = gameObject.transform.eulerAngles.y - other.transform.eulerAngles.y;
             gameObject.transform.eulerAngles = new Vector3(0, other.transform.eulerAngles.y + 180.0f - difference, 0);
+            GameObject.Find("EffectAudio").GetComponent<AudioControl>().PlayHitIron();
         }
     }
 }
