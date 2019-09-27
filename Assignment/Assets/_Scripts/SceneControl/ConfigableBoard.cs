@@ -20,71 +20,80 @@ public class ConfigableBoard : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void OnMouseDown()
     {
-        if (!theMouse.tfHolding)
+        if (!GameObject.Find("GeneralManager").GetComponent<LevelManager>().tfPause)
         {
-            theMouse.tfHolding = true;
-            theMouse.holdingObj = gameObject;
-            if (tfFirstGrab)
+            if (!theMouse.tfHolding)
             {
-                GameObject newBoard = GameObject.Instantiate(gameObject);
-                newBoard.transform.position = gameObject.transform.position;
-                newBoard.transform.rotation = gameObject.transform.rotation;
-                gameObject.transform.rotation = Quaternion.identity;
-                tfFirstGrab = false;
+                theMouse.tfHolding = true;
+                theMouse.holdingObj = gameObject;
+                if (tfFirstGrab)
+                {
+                    GameObject newBoard = GameObject.Instantiate(gameObject);
+                    newBoard.transform.position = gameObject.transform.position;
+                    newBoard.transform.rotation = gameObject.transform.rotation;
+                    gameObject.transform.rotation = Quaternion.identity;
+                    tfFirstGrab = false;
+                }
+                GameObject theButton = GameObject.Find("RotationButton");
+                if (theButton.GetComponent<RotationButtonControl>().tfFixedRotation)
+                {
+                    tfRotateByAngle = true;
+                }
+                else
+                {
+                    tfRotateByAngle = false;
+                }
+                moveOffset = gameObject.transform.position - theMouse.GetMousePosition();
             }
-            GameObject theButton = GameObject.Find("RotationButton");
-            if (theButton.GetComponent<RotationButtonControl>().tfFixedRotation)
-            {
-                tfRotateByAngle = true;
-            }
-            else
-            {
-                tfRotateByAngle = false;
-            }
-            moveOffset = gameObject.transform.position - theMouse.GetMousePosition();
-        }        
+        }
     }
 
     private void OnMouseUp()
     {
-        if (theMouse.tfHolding)
+        if (!GameObject.Find("GeneralManager").GetComponent<LevelManager>().tfPause)
         {
-            theMouse.tfHolding = false;
+            if (theMouse.tfHolding)
+            {
+                theMouse.tfHolding = false;
+            }
         }
     }
 
     private void OnMouseDrag()
     {
-        if (theMouse.tfHolding && gameObject == theMouse.holdingObj)
+        if (!GameObject.Find("GeneralManager").GetComponent<LevelManager>().tfPause)
         {
-            gameObject.transform.position = theMouse.GetMousePosition() + moveOffset;
-            if (tfRotateByAngle)
+            if (theMouse.tfHolding && gameObject == theMouse.holdingObj)
             {
-                if (Input.GetKeyDown(KeyCode.Q))
+                gameObject.transform.position = theMouse.GetMousePosition() + moveOffset;
+                if (tfRotateByAngle)
                 {
-                    gameObject.transform.eulerAngles = new Vector3(0, gameObject.transform.eulerAngles.y - rotateAngle, 0);
+                    if (Input.GetKeyDown(KeyCode.Q))
+                    {
+                        gameObject.transform.eulerAngles = new Vector3(0, gameObject.transform.eulerAngles.y - rotateAngle, 0);
+                    }
+                    else if (Input.GetKeyDown(KeyCode.E))
+                    {
+                        gameObject.transform.eulerAngles = new Vector3(0, gameObject.transform.eulerAngles.y + rotateAngle, 0);
+                    }
                 }
-                else if (Input.GetKeyDown(KeyCode.E))
+                else
                 {
-                    gameObject.transform.eulerAngles = new Vector3(0, gameObject.transform.eulerAngles.y + rotateAngle, 0);
+                    if (Input.GetKey(KeyCode.Q))
+                    {
+                        gameObject.transform.eulerAngles = new Vector3(0, gameObject.transform.eulerAngles.y - rotateSpeed * Time.deltaTime, 0);
+                    }
+                    else if (Input.GetKey(KeyCode.E))
+                    {
+                        gameObject.transform.eulerAngles = new Vector3(0, gameObject.transform.eulerAngles.y + rotateSpeed * Time.deltaTime, 0);
+                    }
                 }
             }
-            else
-            {
-                if (Input.GetKey(KeyCode.Q))
-                {
-                    gameObject.transform.eulerAngles = new Vector3(0, gameObject.transform.eulerAngles.y - rotateSpeed * Time.deltaTime, 0);
-                }
-                else if (Input.GetKey(KeyCode.E))
-                {
-                    gameObject.transform.eulerAngles = new Vector3(0, gameObject.transform.eulerAngles.y + rotateSpeed * Time.deltaTime, 0);
-                }
-            }            
-        }        
+        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using TMPro;
 
 public class RotationButtonControl : MonoBehaviour
@@ -34,5 +35,6 @@ public class RotationButtonControl : MonoBehaviour
             theText.text = "Fixed Rotation";
             tfFixedRotation = true;
         }
+        EventSystem.current.SetSelectedGameObject(null);
     }
 }

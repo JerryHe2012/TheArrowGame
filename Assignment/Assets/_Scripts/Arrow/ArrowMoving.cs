@@ -11,6 +11,7 @@ public class ArrowMoving : MonoBehaviour
     [SerializeField]
     private float speedScale = 10.0f;
 
+    private bool tfshot = false;
     private MouseManager theMouse;
     private Quaternion originalRotation;
     private Vector3 originalPosition;
@@ -25,6 +26,11 @@ public class ArrowMoving : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (tfshot)
+        {
+            tfMouseSetting = false;
+        }
+
         if (tfMouseSetting)
         {
             Vector3 mousePosition = theMouse.GetMousePosition();
@@ -34,6 +40,7 @@ public class ArrowMoving : MonoBehaviour
             speed = Vector3.Distance(mousePosition, gameObject.transform.position) * speedScale;
             if (Input.GetMouseButtonDown(1))
             {
+                tfshot = true;
                 tfFlying = true;
                 tfMouseSetting = false;
                 GameObject.Find("EffectAudio").GetComponent<AudioControl>().PlayBow();
@@ -47,6 +54,7 @@ public class ArrowMoving : MonoBehaviour
                 {
                     gameObject.transform.rotation = originalRotation;
                     gameObject.transform.position = originalPosition;
+                    tfshot = false;
                     tfMouseSetting = true;
                 }
             }
