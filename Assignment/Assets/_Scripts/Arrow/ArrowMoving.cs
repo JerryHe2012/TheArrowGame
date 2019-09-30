@@ -5,13 +5,17 @@ using UnityEngine;
 public class ArrowMoving : MonoBehaviour
 {
     public float speed = 10;
+    public float minCheck = 0.25f;
     public bool tfFlying = true;
+    public bool tfWillBounce = false;
     public bool tfMouseSetting = true;
 
     [SerializeField]
-    private float speedScale = 10.0f;
+    private float speedScale = 10.0f;    
 
-    private bool tfshot = false;
+    private bool tfshot = false;    
+    private GameObject preBouncePlate = null;
+    private float preDistance = 0.0f;
     private MouseManager theMouse;
     private Quaternion originalRotation;
     private Vector3 originalPosition;
@@ -54,7 +58,10 @@ public class ArrowMoving : MonoBehaviour
                 {
                     gameObject.transform.rotation = originalRotation;
                     gameObject.transform.position = originalPosition;
+                    preBouncePlate = null;
+                    tfWillBounce = false;
                     tfshot = false;
+                    tfFlying = false;
                     tfMouseSetting = true;
                 }
             }
@@ -64,15 +71,34 @@ public class ArrowMoving : MonoBehaviour
         {
             gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, (gameObject.transform.position + gameObject.transform.forward), speed * Time.deltaTime);
         }
+
+        if (tfWillBounce)
+        {
+            float newDistance = Vector3.Distance(gameObject.transform.position, preBouncePlate.transform.position);
+            if (newDistance >= preDistance || newDistance < minCheck)
+            {
+                float difference = gameObject.transform.eulerAngles.y - preBouncePlate.transform.eulerAngles.y;
+                gameObject.transform.eulerAngles = new Vector3(0, preBouncePlate.transform.eulerAngles.y + 180.0f - difference, 0);
+                GameObject.Find("EffectAudio").GetComponent<AudioControl>().PlayHitIron();
+                tfWillBounce = false;
+            }
+            else
+            {
+                preDistance = newDistance;
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "BounceBoard")
+        if (other.tag == "BounceBoard" && tfFlying)
         {
-            float difference = gameObject.transform.eulerAngles.y - other.transform.eulerAngles.y;
-            gameObject.transform.eulerAngles = new Vector3(0, other.transform.eulerAngles.y + 180.0f - difference, 0);
-            GameObject.Find("EffectAudio").GetComponent<AudioControl>().PlayHitIron();
+            if (other.gameObject != preBouncePlate)
+            {
+                tfWillBounce = true;
+                preBouncePlate = other.gameObject;
+                preDistance = Vector3.Distance(gameObject.transform.position, preBouncePlate.transform.position);
+            }        
         }
     }
 }

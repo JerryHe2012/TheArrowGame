@@ -11,9 +11,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.05
-  m_Height: 0.75
+  m_Height: 2.2
   m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 0.25}
+  m_Center: {x: 0, y: 0, z: 0.97}
 --- !u!1 &787355685988494039
 GameObject:
   m_ObjectHideFlags: 0
@@ -60,7 +60,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  minCheck: 0.25
   tfFlying: 0
+  tfWillBounce: 0
   tfMouseSetting: 1
   speedScale: 10
 --- !u!136 &7316344482458172430
@@ -74,9 +76,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.25
-  m_Height: 4
+  m_Height: 13
   m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 3.6}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &8622210133851590417
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -84,11 +86,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 787355685988494035}
     m_Modifications:
-    - target: {fileID: 7536110684904490198, guid: 9a9183937ec58a649b797fb243e930fe,
-        type: 3}
-      propertyPath: m_Name
-      value: Arrow
-      objectReference: {fileID: 0}
     - target: {fileID: 6831676297254860485, guid: 9a9183937ec58a649b797fb243e930fe,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -143,6 +140,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7536110684904490198, guid: 9a9183937ec58a649b797fb243e930fe,
+        type: 3}
+      propertyPath: m_Name
+      value: Arrow
       objectReference: {fileID: 0}
     - target: {fileID: 2786661936703219375, guid: 9a9183937ec58a649b797fb243e930fe,
         type: 3}

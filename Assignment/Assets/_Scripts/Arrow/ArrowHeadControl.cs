@@ -19,7 +19,7 @@ public class ArrowHeadControl : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Target")
+        if (other.gameObject.tag == "Target" && !theArrowHolder.tfWillBounce)
         {
             theArrowHolder.tfFlying = false;
             GameObject.Find("EffectAudio").GetComponent<AudioControl>().PlayHit();
