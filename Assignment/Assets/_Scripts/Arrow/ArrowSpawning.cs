@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using TMPro;
 
 public class ArrowSpawning : MonoBehaviour
 {
@@ -8,6 +10,10 @@ public class ArrowSpawning : MonoBehaviour
 
     [SerializeField]
     private GameObject thePreFab = null;
+    [SerializeField]
+    private int totalArrowCount = 0;
+    [SerializeField]
+    private int stageArrowLimit = 6;
 
     // Start is called before the first frame update
     void Start()
@@ -22,8 +28,26 @@ public class ArrowSpawning : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.W))
             {
-                previousObject = GameObject.Instantiate(thePreFab, gameObject.transform);
+                if (totalArrowCount < stageArrowLimit)
+                {
+                    previousObject = GameObject.Instantiate(thePreFab, gameObject.transform);
+                }
+                else
+                {
+                    GameObject.Find("ErrorMessage").GetComponent<ErrorMessage>().displayArrowError();
+                }
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+    }
+
+    public void updateArrowCount()
+    {
+        totalArrowCount++;
+        GameObject.Find("ArrowText").GetComponent<TextMeshProUGUI>().text = "Arrow: " + totalArrowCount + "/" + stageArrowLimit;
     }
 }

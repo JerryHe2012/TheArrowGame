@@ -1,12 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ConfigableBoard : MonoBehaviour
 {
     public bool tfRotateByAngle = true;
     public float rotateAngle = 45.0f;
     public float rotateSpeed = 100.0f;
+    public int boardLimit = 2;
+    public int boardcount = 0;
+
+    [SerializeField]
+    private GameObject referText = null;
+    [SerializeField]
+    private string theText = "Iron Plate:";
 
     private MouseManager theMouse;
     private bool tfFirstGrab = true;
@@ -95,5 +103,11 @@ public class ConfigableBoard : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void updateBoardCount()
+    {
+        boardcount++;
+        referText.GetComponent<TextMeshProUGUI>().text = theText + boardcount  + "/" + boardLimit;
     }
 }
