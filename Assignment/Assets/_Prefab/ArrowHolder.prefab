@@ -44,6 +44,7 @@ Transform:
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 2983286253726448084}
+  - {fileID: 623413537816522476}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -79,6 +80,36 @@ CapsuleCollider:
   m_Height: 13
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &7478694501991058963
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 623413537816522476}
+  m_Layer: 0
+  m_Name: ArrowTail
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &623413537816522476
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7478694501991058963}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -5.63}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 787355685988494035}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &8622210133851590417
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -86,6 +117,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 787355685988494035}
     m_Modifications:
+    - target: {fileID: 7536110684904490198, guid: 9a9183937ec58a649b797fb243e930fe,
+        type: 3}
+      propertyPath: m_Name
+      value: Arrow
+      objectReference: {fileID: 0}
     - target: {fileID: 6831676297254860485, guid: 9a9183937ec58a649b797fb243e930fe,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -140,11 +176,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7536110684904490198, guid: 9a9183937ec58a649b797fb243e930fe,
-        type: 3}
-      propertyPath: m_Name
-      value: Arrow
       objectReference: {fileID: 0}
     - target: {fileID: 2786661936703219375, guid: 9a9183937ec58a649b797fb243e930fe,
         type: 3}
