@@ -41,9 +41,13 @@ public class ConfigableBoard : MonoBehaviour
                 theMouse.holdingObj = gameObject;
                 if (tfFirstGrab)
                 {
-                    GameObject newBoard = GameObject.Instantiate(gameObject);
-                    newBoard.transform.position = gameObject.transform.position;
-                    newBoard.transform.rotation = gameObject.transform.rotation;
+                    updateBoardCount();
+                    if (boardcount < boardLimit)
+                    {
+                        GameObject newBoard = GameObject.Instantiate(gameObject);
+                        newBoard.transform.position = gameObject.transform.position;
+                        newBoard.transform.rotation = gameObject.transform.rotation;
+                    }                    
                     gameObject.transform.rotation = Quaternion.identity;
                     tfFirstGrab = false;
                 }

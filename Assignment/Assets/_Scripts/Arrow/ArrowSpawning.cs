@@ -34,7 +34,7 @@ public class ArrowSpawning : MonoBehaviour
                 }
                 else
                 {
-                    GameObject.Find("ErrorMessage").GetComponent<ErrorMessage>().displayArrowError();
+                    GameObject.Find("Message").GetComponent<ErrorMessage>().displayArrowError();
                 }
             }
         }

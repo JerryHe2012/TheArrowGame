@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class LevelManager : MonoBehaviour
@@ -11,12 +12,16 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField]
     private GameObject Menu = null;
-
+    [SerializeField]
+    private GameObject WinMenu = null;
+    [SerializeField]
     private GameObject theTutoial = null;
+    [SerializeField]
+    private string nextLevel = "Level2";
+
     // Start is called before the first frame update
     void Start()
     {
-        theTutoial = GameObject.Find("Tutorial");
     }
 
     // Update is called once per frame
@@ -66,11 +71,29 @@ public class LevelManager : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(null);
     }
 
+    public void WinOption()
+    {
+        tfPause = true;
+        GameObject.Find("ArrowSpawn").GetComponent<ArrowSpawning>().previousObject.GetComponent<ArrowMoving>().tfMouseSetting = false;
+        WinMenu.SetActive(true);
+    }
+
     public void ResumeGame()
     {
         Menu.SetActive(false);
+        WinMenu.SetActive(false);
         tfPause = false;
         GameObject.Find("ArrowSpawn").GetComponent<ArrowSpawning>().previousObject.GetComponent<ArrowMoving>().tfMouseSetting = true;
         EventSystem.current.SetSelectedGameObject(null);
+    }
+
+    public void ProcessToNextLevel()
+    {
+        SceneManager.LoadScene(nextLevel);
+    }
+
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

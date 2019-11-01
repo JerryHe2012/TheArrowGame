@@ -84,23 +84,23 @@ public class ArrowMoving : MonoBehaviour
                 GameObject.Find("ArrowSpawn").GetComponent<ArrowSpawning>().updateArrowCount();
             }
         }
-        else
-        {
-            if (gameObject == GameObject.Find("ArrowSpawn").GetComponent<ArrowSpawning>().previousObject)
-            {
-                //if (Input.GetKeyDown(KeyCode.R))
-                //{
-                //    gameObject.transform.Find("ArrowTail").localPosition = originalTailPosition;
-                //    gameObject.transform.rotation = originalRotation;
-                //    gameObject.transform.position = originalPosition;
-                //    preBouncePlate = null;
-                //    tfWillBounce = false;
-                //    tfshot = false;
-                //    tfFlying = false;
-                //    tfMouseSetting = true;
-                //}
-            }
-        }
+        //else
+        //{
+        //    if (gameObject == GameObject.Find("ArrowSpawn").GetComponent<ArrowSpawning>().previousObject)
+        //    {
+        //        if (Input.GetKeyDown(KeyCode.R))
+        //        {
+        //            gameObject.transform.Find("ArrowTail").localPosition = originalTailPosition;
+        //            gameObject.transform.rotation = originalRotation;
+        //            gameObject.transform.position = originalPosition;
+        //            preBouncePlate = null;
+        //            tfWillBounce = false;
+        //            tfshot = false;
+        //            tfFlying = false;
+        //            tfMouseSetting = true;
+        //        }
+        //    }
+        //}
 
         if (tfFlying)
         {

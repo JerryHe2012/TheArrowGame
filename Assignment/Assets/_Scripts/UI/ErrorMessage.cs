@@ -8,6 +8,8 @@ public class ErrorMessage : MonoBehaviour
     GameObject ArrowError = null;
     [SerializeField]
     GameObject IronPlateError = null;
+    [SerializeField]
+    GameObject HitTarget = null;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +26,7 @@ public class ErrorMessage : MonoBehaviour
     {
         ArrowError.SetActive(true);
         IronPlateError.SetActive(false);
+        HitTarget.SetActive(false);
         gameObject.GetComponent<Animation>().Play();
     }
 
@@ -31,6 +34,15 @@ public class ErrorMessage : MonoBehaviour
     {
         ArrowError.SetActive(false);
         IronPlateError.SetActive(true);
+        HitTarget.SetActive(false);
+        gameObject.GetComponent<Animation>().Play();
+    }
+
+    public void displayHitTarget()
+    {
+        ArrowError.SetActive(false);
+        IronPlateError.SetActive(false);
+        HitTarget.SetActive(true);
         gameObject.GetComponent<Animation>().Play();
     }
 }

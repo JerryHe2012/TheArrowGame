@@ -6,6 +6,7 @@ TagManager:
   tags:
   - BounceBoard
   - Target
+  - WoodWall
   layers:
   - Default
   - TransparentFX
