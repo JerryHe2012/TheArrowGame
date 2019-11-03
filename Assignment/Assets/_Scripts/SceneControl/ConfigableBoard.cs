@@ -84,6 +84,10 @@ public class ConfigableBoard : MonoBehaviour
             if (theMouse.tfHolding)
             {
                 theMouse.tfHolding = false;
+                if (tfGlass)
+                {
+                    gameObject.GetComponent<GlassAction>().ReGainPosition();
+                }                
             }
         }
     }

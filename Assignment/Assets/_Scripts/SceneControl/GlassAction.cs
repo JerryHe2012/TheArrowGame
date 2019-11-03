@@ -11,11 +11,7 @@ public class GlassAction : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        foreach (Rigidbody rb in allRig)
-        {
-            allOriginalPosition.Add(rb.position);
-            allOriginalRotation.Add(rb.rotation);
-        }
+        ReGainPosition();
     }
 
     // Update is called once per frame
@@ -26,12 +22,9 @@ public class GlassAction : MonoBehaviour
 
     public void ChangePhysic()
     {
-        allOriginalPosition.Clear();
-        allOriginalRotation.Clear();
+        ReGainPosition();
         foreach (Rigidbody rb in allRig)
         {
-            allOriginalPosition.Add(rb.position);
-            allOriginalRotation.Add(rb.rotation);
             rb.isKinematic = false;
         }
     }
@@ -46,6 +39,17 @@ public class GlassAction : MonoBehaviour
             rb.position = allOriginalPosition[i];
             rb.rotation = allOriginalRotation[i];
             i++;
+        }
+    }
+
+    public void ReGainPosition()
+    {
+        allOriginalPosition.Clear();
+        allOriginalRotation.Clear();
+        foreach (Rigidbody rb in allRig)
+        {
+            allOriginalPosition.Add(rb.position);
+            allOriginalRotation.Add(rb.rotation);
         }
     }
 }

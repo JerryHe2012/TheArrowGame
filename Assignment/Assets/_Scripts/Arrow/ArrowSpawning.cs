@@ -25,7 +25,7 @@ public class ArrowSpawning : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!previousObject.GetComponent<ArrowMoving>().tfMouseSetting)
+        if (!previousObject.GetComponent<ArrowMoving>().tfMouseSetting && !GameObject.Find("GeneralManager").GetComponent<LevelManager>().tfPause)
         {
             if (Input.GetKeyDown(KeyCode.W))
             {

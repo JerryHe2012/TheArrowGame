@@ -73,7 +73,6 @@ public class LevelManager : MonoBehaviour
 
     public void WinOption()
     {
-        tfPause = true;
         GameObject.Find("ArrowSpawn").GetComponent<ArrowSpawning>().previousObject.GetComponent<ArrowMoving>().tfMouseSetting = false;
         WinMenu.SetActive(true);
     }
