@@ -31,6 +31,10 @@ public class ConfigableBoard : MonoBehaviour
         {
             GameObject.Find("ArrowSpawn").GetComponent<ArrowSpawning>().allGlassBoard.Add(gameObject.GetComponent<GlassAction>());
         }
+        if (tfMovable)
+        {
+            referText.GetComponent<TextMeshProUGUI>().text = theText + boardcount + "/" + boardLimit;
+        }
     }
 
     // Update is called once per frame

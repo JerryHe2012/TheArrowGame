@@ -26,8 +26,12 @@ public class GlassAction : MonoBehaviour
 
     public void ChangePhysic()
     {
+        allOriginalPosition.Clear();
+        allOriginalRotation.Clear();
         foreach (Rigidbody rb in allRig)
         {
+            allOriginalPosition.Add(rb.position);
+            allOriginalRotation.Add(rb.rotation);
             rb.isKinematic = false;
         }
     }
