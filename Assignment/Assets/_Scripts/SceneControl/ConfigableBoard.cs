@@ -15,6 +15,10 @@ public class ConfigableBoard : MonoBehaviour
     private GameObject referText = null;
     [SerializeField]
     private string theText = "Iron Plate:";
+    [SerializeField]
+    private bool tfMovable = true;
+    [SerializeField]
+    private bool tfGlass = false;
 
     private MouseManager theMouse;
     private bool tfFirstGrab = true;
@@ -23,6 +27,10 @@ public class ConfigableBoard : MonoBehaviour
     void Start()
     {
         theMouse = GameObject.Find("MouseManager").GetComponent<MouseManager>();
+        if (tfGlass)
+        {
+            GameObject.Find("ArrowSpawn").GetComponent<ArrowSpawning>().allGlassBoard.Add(gameObject.GetComponent<GlassAction>());
+        }
     }
 
     // Update is called once per frame
@@ -33,7 +41,7 @@ public class ConfigableBoard : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (!GameObject.Find("GeneralManager").GetComponent<LevelManager>().tfPause)
+        if (!GameObject.Find("GeneralManager").GetComponent<LevelManager>().tfPause && tfMovable)
         {
             if (!theMouse.tfHolding)
             {
@@ -67,7 +75,7 @@ public class ConfigableBoard : MonoBehaviour
 
     private void OnMouseUp()
     {
-        if (!GameObject.Find("GeneralManager").GetComponent<LevelManager>().tfPause)
+        if (!GameObject.Find("GeneralManager").GetComponent<LevelManager>().tfPause && tfMovable)
         {
             if (theMouse.tfHolding)
             {
@@ -78,7 +86,7 @@ public class ConfigableBoard : MonoBehaviour
 
     private void OnMouseDrag()
     {
-        if (!GameObject.Find("GeneralManager").GetComponent<LevelManager>().tfPause)
+        if (!GameObject.Find("GeneralManager").GetComponent<LevelManager>().tfPause && tfMovable)
         {
             if (theMouse.tfHolding && gameObject == theMouse.holdingObj)
             {

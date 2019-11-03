@@ -7,6 +7,7 @@ using TMPro;
 public class ArrowSpawning : MonoBehaviour
 {
     public GameObject previousObject = null;
+    public List<GlassAction> allGlassBoard = new List<GlassAction>();
 
     [SerializeField]
     private GameObject thePreFab = null;
@@ -31,6 +32,10 @@ public class ArrowSpawning : MonoBehaviour
                 if (totalArrowCount < stageArrowLimit)
                 {
                     previousObject = GameObject.Instantiate(thePreFab, gameObject.transform);
+                    foreach (GlassAction theGlass in allGlassBoard)
+                    {
+                        theGlass.ReversePosition();
+                    }
                 }
                 else
                 {

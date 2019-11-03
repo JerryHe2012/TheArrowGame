@@ -126,13 +126,18 @@ public class ArrowMoving : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "BounceBoard" && tfFlying)
+        if ((other.tag == "BounceBoard" || other.tag == "BounceGlass") && tfFlying)
         {
             if (other.gameObject != preBouncePlate)
             {
                 tfWillBounce = true;
                 preBouncePlate = other.gameObject;
                 preDistance = Vector3.Distance(gameObject.transform.position, preBouncePlate.transform.position);
+                if (other.tag == "BounceGlass")
+                {
+                    other.gameObject.GetComponent<BoxCollider>().enabled = false;
+                    other.gameObject.GetComponent<GlassAction>().ChangePhysic();
+                }
             }        
         }
     }
