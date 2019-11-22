@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GlassAction : MonoBehaviour
-{    
+{
+    public GameObject entireGlass = null;
+    public GameObject piecesGlass = null;
+
     public Rigidbody[] allRig;
 
     private List<Vector3> allOriginalPosition = new List<Vector3>();
@@ -22,6 +25,9 @@ public class GlassAction : MonoBehaviour
 
     public void ChangePhysic()
     {
+        gameObject.GetComponent<BoxCollider>().enabled = false;
+        piecesGlass.SetActive(true);
+        entireGlass.SetActive(false);
         ReGainPosition();
         foreach (Rigidbody rb in allRig)
         {
@@ -36,10 +42,12 @@ public class GlassAction : MonoBehaviour
         foreach (Rigidbody rb in allRig)
         {
             rb.isKinematic = true;
-            rb.position = allOriginalPosition[i];
-            rb.rotation = allOriginalRotation[i];
+            rb.gameObject.transform.position = allOriginalPosition[i];
+            rb.gameObject.transform.rotation = allOriginalRotation[i];
             i++;
         }
+        piecesGlass.SetActive(false);
+        entireGlass.SetActive(true);
     }
 
     public void ReGainPosition()
@@ -48,8 +56,8 @@ public class GlassAction : MonoBehaviour
         allOriginalRotation.Clear();
         foreach (Rigidbody rb in allRig)
         {
-            allOriginalPosition.Add(rb.position);
-            allOriginalRotation.Add(rb.rotation);
+            allOriginalPosition.Add(rb.gameObject.transform.position);
+            allOriginalRotation.Add(rb.gameObject.transform.rotation);
         }
     }
 }

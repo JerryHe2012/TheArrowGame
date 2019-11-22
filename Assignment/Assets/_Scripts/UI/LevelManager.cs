@@ -35,14 +35,6 @@ public class LevelManager : MonoBehaviour
             {
                 theTutoial.SetActive(true);                
             }
-
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                tfTutorialOn = false;
-                tfPause = false;
-                theTutoial.SetActive(false);
-                GameObject.Find("ArrowSpawn").GetComponent<ArrowSpawning>().previousObject.GetComponent<ArrowMoving>().tfMouseSetting = true;
-            }
         }
         else
         {
@@ -69,6 +61,14 @@ public class LevelManager : MonoBehaviour
             tfTutorialOn = true;
         }
         EventSystem.current.SetSelectedGameObject(null);
+    }
+
+    public void CloseTutorial()
+    {
+        tfTutorialOn = false;
+        tfPause = false;
+        theTutoial.SetActive(false);
+        GameObject.Find("ArrowSpawn").GetComponent<ArrowSpawning>().previousObject.GetComponent<ArrowMoving>().tfMouseSetting = true;
     }
 
     public void WinOption()

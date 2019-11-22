@@ -12,8 +12,6 @@ public class MainMenuTextColorChange : MonoBehaviour, IPointerEnterHandler, IPoi
     private Color enterColor = Color.blue;
     [SerializeField]
     private Color exitColor = Color.white;
-    [SerializeField]
-    private Color clickColor = Color.red;
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +37,6 @@ public class MainMenuTextColorChange : MonoBehaviour, IPointerEnterHandler, IPoi
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        theText.color = clickColor;
+        theText.color = exitColor;
     }
 }

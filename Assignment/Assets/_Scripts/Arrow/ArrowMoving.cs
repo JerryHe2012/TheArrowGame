@@ -135,7 +135,6 @@ public class ArrowMoving : MonoBehaviour
                 preDistance = Vector3.Distance(gameObject.transform.position, preBouncePlate.transform.position);
                 if (other.tag == "BounceGlass")
                 {
-                    other.gameObject.GetComponent<BoxCollider>().enabled = false;
                     other.gameObject.GetComponent<GlassAction>().ChangePhysic();
                 }
             }        

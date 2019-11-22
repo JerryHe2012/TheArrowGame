@@ -6,6 +6,8 @@ using UnityEngine.EventSystems;
 
 public class MenuButton : MonoBehaviour
 {
+    [SerializeField]
+    private string name = "Level1_1";
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +22,7 @@ public class MenuButton : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("LevelOne");
+        SceneManager.LoadScene(name);
         EventSystem.current.SetSelectedGameObject(null);
     }
 

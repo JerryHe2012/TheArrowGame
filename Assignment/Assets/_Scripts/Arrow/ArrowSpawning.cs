@@ -20,6 +20,7 @@ public class ArrowSpawning : MonoBehaviour
     void Start()
     {
         previousObject = GameObject.Find("ArrowHolder");
+        GameObject.Find("ArrowText").GetComponent<TextMeshProUGUI>().text = "Arrow: " + totalArrowCount + "/" + stageArrowLimit;
     }
 
     // Update is called once per frame
