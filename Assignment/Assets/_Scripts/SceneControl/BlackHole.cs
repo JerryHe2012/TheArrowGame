@@ -30,7 +30,7 @@ public class BlackHole : MonoBehaviour
             if (theDistance < effectRadius)
             {
                 theArrow.transform.Find("RotationHolder").LookAt(gameObject.transform);
-                theArrow.transform.rotation = Quaternion.RotateTowards(theArrow.transform.rotation, theArrow.transform.Find("RotationHolder").rotation, rotateSpeed * (theDistance / effectRadius));
+                theArrow.transform.rotation = Quaternion.RotateTowards(theArrow.transform.rotation, theArrow.transform.Find("RotationHolder").rotation, rotateSpeed);
             }
         }
     }

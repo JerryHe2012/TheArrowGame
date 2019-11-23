@@ -35,6 +35,17 @@ public class ConfigableBoard : MonoBehaviour
         {
             referText.GetComponent<TextMeshProUGUI>().text = theText + boardcount + "/" + boardLimit;
         }
+        if (tfMovable)
+        {
+            if (tfGlass)
+            {
+                GameObject.Find("ScoreSystem").GetComponent<ScoreSystem>().glassLeft = boardLimit - boardcount;
+            }
+            else
+            {
+                GameObject.Find("ScoreSystem").GetComponent<ScoreSystem>().ironLeft = boardLimit - boardcount;
+            }
+        }
     }
 
     // Update is called once per frame
@@ -129,5 +140,13 @@ public class ConfigableBoard : MonoBehaviour
     {
         boardcount++;
         referText.GetComponent<TextMeshProUGUI>().text = theText + boardcount  + "/" + boardLimit;
+        if (tfGlass)
+        {
+            GameObject.Find("ScoreSystem").GetComponent<ScoreSystem>().glassLeft = boardLimit - boardcount;
+        }
+        else
+        {
+            GameObject.Find("ScoreSystem").GetComponent<ScoreSystem>().ironLeft = boardLimit - boardcount;
+        }        
     }
 }

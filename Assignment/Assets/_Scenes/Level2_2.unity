@@ -6930,7 +6930,7 @@ MonoBehaviour:
   thePreFab: {fileID: 787355685988494039, guid: 306df27ca6159db40837e03e25d5bb6b,
     type: 3}
   totalArrowCount: 0
-  stageArrowLimit: 2
+  stageArrowLimit: 5
 --- !u!1001 &1404631873
 PrefabInstance:
   m_ObjectHideFlags: 0

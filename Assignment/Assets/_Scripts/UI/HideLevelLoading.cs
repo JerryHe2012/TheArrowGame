@@ -5,6 +5,8 @@ using UnityEngine;
 public class HideLevelLoading : MonoBehaviour
 {
     [SerializeField]
+    bool tfLoadingMessage = true;
+    [SerializeField]
     bool tfTutorialOn = false;
     [SerializeField]
     LevelManager levelManager = null;
@@ -12,7 +14,10 @@ public class HideLevelLoading : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (!tfLoadingMessage)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     // Update is called once per frame

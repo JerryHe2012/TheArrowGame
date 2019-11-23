@@ -3120,7 +3120,7 @@ MonoBehaviour:
   tfRotateByAngle: 1
   rotateAngle: 45
   rotateSpeed: 100
-  boardLimit: 3
+  boardLimit: 6
   boardcount: 0
   referText: {fileID: 900094713}
   theText: 'Iron Plate:'

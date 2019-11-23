@@ -21,6 +21,7 @@ public class ArrowSpawning : MonoBehaviour
     {
         previousObject = GameObject.Find("ArrowHolder");
         GameObject.Find("ArrowText").GetComponent<TextMeshProUGUI>().text = "Arrow: " + totalArrowCount + "/" + stageArrowLimit;
+        GameObject.Find("ScoreSystem").GetComponent<ScoreSystem>().arrowLeft = stageArrowLimit - totalArrowCount;
     }
 
     // Update is called once per frame
@@ -32,6 +33,7 @@ public class ArrowSpawning : MonoBehaviour
             {
                 if (totalArrowCount < stageArrowLimit)
                 {
+                    GameObject.Find("ScoreSystem").GetComponent<ScoreSystem>().arrowLeft = stageArrowLimit - totalArrowCount;
                     previousObject = GameObject.Instantiate(thePreFab, gameObject.transform);
                     foreach (GlassAction theGlass in allGlassBoard)
                     {
@@ -47,6 +49,7 @@ public class ArrowSpawning : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.R))
         {
+            GameObject.Find("ScoreSystem").GetComponent<ScoreSystem>().RemoveScore();
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }

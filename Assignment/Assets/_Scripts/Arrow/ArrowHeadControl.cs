@@ -33,6 +33,7 @@ public class ArrowHeadControl : MonoBehaviour
             GameObject.Find("EffectAudio").GetComponent<AudioControl>().PlayHit();
             if (other.gameObject.tag == "Target")
             {
+                GameObject.Find("ScoreSystem").GetComponent<ScoreSystem>().AddScore();
                 GameObject.Find("GeneralManager").GetComponent<LevelManager>().tfPause = true;
                 GameObject.Find("Message").GetComponent<ErrorMessage>().displayHitTarget();
                 hit = true;

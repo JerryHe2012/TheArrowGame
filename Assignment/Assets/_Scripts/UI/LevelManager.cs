@@ -93,6 +93,7 @@ public class LevelManager : MonoBehaviour
 
     public void RestartLevel()
     {
+        GameObject.Find("ScoreSystem").GetComponent<ScoreSystem>().RemoveScore();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
