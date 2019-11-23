@@ -149,11 +149,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 787355685988494035}
     m_Modifications:
-    - target: {fileID: 7536110684904490198, guid: 9a9183937ec58a649b797fb243e930fe,
-        type: 3}
-      propertyPath: m_Name
-      value: Arrow
-      objectReference: {fileID: 0}
     - target: {fileID: 6831676297254860485, guid: 9a9183937ec58a649b797fb243e930fe,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -209,11 +204,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7536110684904490198, guid: 9a9183937ec58a649b797fb243e930fe,
+        type: 3}
+      propertyPath: m_Name
+      value: Arrow
+      objectReference: {fileID: 0}
     - target: {fileID: 2786661936703219375, guid: 9a9183937ec58a649b797fb243e930fe,
         type: 3}
       propertyPath: theArrowHolder
       value: 
       objectReference: {fileID: 787355685988494034}
+    - target: {fileID: 2786661936703219375, guid: 9a9183937ec58a649b797fb243e930fe,
+        type: 3}
+      propertyPath: physicalCalculateError
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2951321724336615456, guid: 9a9183937ec58a649b797fb243e930fe, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9a9183937ec58a649b797fb243e930fe, type: 3}

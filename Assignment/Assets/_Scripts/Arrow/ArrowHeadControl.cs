@@ -5,7 +5,14 @@ using UnityEngine;
 public class ArrowHeadControl : MonoBehaviour
 {
     public ArrowMoving theArrowHolder;
+
+    [SerializeField]
+    private float physicalCalculateError = 0.5f;
+    [SerializeField]
+    private float timeCounter = 0;
+
     private bool hit = false;
+    private bool canhit = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,17 +34,40 @@ public class ArrowHeadControl : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if ((other.gameObject.tag == "Target" || other.gameObject.tag == "WoodWall") && !theArrowHolder.tfWillBounce && theArrowHolder.tfFlying)
+        if ((other.tag == "BounceBoard" || other.tag == "BounceGlass"))
         {
-            theArrowHolder.tfFlying = false;
-            GameObject.Find("EffectAudio").GetComponent<AudioControl>().PlayHit();
-            if (other.gameObject.tag == "Target")
+            canhit = false;
+        }
+        else
+        {
+            if ((other.gameObject.tag == "Target" || other.gameObject.tag == "WoodWall") && !theArrowHolder.tfWillBounce && theArrowHolder.tfFlying && canhit)
             {
-                GameObject.Find("ScoreSystem").GetComponent<ScoreSystem>().AddScore();
-                GameObject.Find("GeneralManager").GetComponent<LevelManager>().tfPause = true;
-                GameObject.Find("Message").GetComponent<ErrorMessage>().displayHitTarget();
-                hit = true;
+                theArrowHolder.tfFlying = false;
+                GameObject.Find("EffectAudio").GetComponent<AudioControl>().PlayHit();
+                if (other.gameObject.tag == "Target")
+                {
+                    GameObject.Find("ScoreSystem").GetComponent<ScoreSystem>().AddScore();
+                    GameObject.Find("GeneralManager").GetComponent<LevelManager>().tfPause = true;
+                    GameObject.Find("Message").GetComponent<ErrorMessage>().displayHitTarget();
+                    hit = true;
+                }
             }
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if ((other.tag == "BounceBoard" || other.tag == "BounceGlass"))
+        {
+            canhit = false;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if ((other.tag == "BounceBoard" || other.tag == "BounceGlass"))
+        {
+            canhit = true;
         }
     }
 }

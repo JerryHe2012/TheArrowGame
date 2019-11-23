@@ -23,6 +23,10 @@ public class ConfigableBoard : MonoBehaviour
     private MouseManager theMouse;
     private bool tfFirstGrab = true;
     private Vector3 moveOffset = Vector3.zero;
+
+    private Vector3 rememberPosition = new Vector3();
+    private Vector3 rememberRotation = new Vector3();
+    private bool tfColliding = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -46,12 +50,22 @@ public class ConfigableBoard : MonoBehaviour
                 GameObject.Find("ScoreSystem").GetComponent<ScoreSystem>().ironLeft = boardLimit - boardcount;
             }
         }
+
+        rememberPosition = gameObject.transform.position;
+        rememberRotation = new Vector3(0, gameObject.transform.eulerAngles.y, 0);
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (!theMouse.tfHolding && tfMovable && !tfColliding)
+        {
+            if (gameObject.transform.position != rememberPosition)
+            {
+                rememberPosition = gameObject.transform.position;
+                rememberRotation = new Vector3(0, gameObject.transform.eulerAngles.y, 0);
+            }
+        }
     }
 
     private void OnMouseDown()
@@ -148,5 +162,36 @@ public class ConfigableBoard : MonoBehaviour
         {
             GameObject.Find("ScoreSystem").GetComponent<ScoreSystem>().ironLeft = boardLimit - boardcount;
         }        
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if ((other.tag == "BounceBoard" || other.tag == "BounceGlass"))
+        {
+            tfColliding = true;
+        }        
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if ((other.tag == "BounceBoard" || other.tag == "BounceGlass"))
+        {
+            if (!theMouse.tfHolding && tfMovable)
+            {
+                if (gameObject.transform.position != rememberPosition)
+                {
+                    gameObject.transform.position = rememberPosition;
+                    gameObject.transform.eulerAngles = rememberRotation;
+                }
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if ((other.tag == "BounceBoard" || other.tag == "BounceGlass"))
+        {
+            tfColliding = false;
+        }
     }
 }
