@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PointerLaser : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject glowingPoint = null;
+
     private LineRenderer lr = null;
 
     // Start is called before the first frame update
@@ -21,7 +24,8 @@ public class PointerLaser : MonoBehaviour
         {
             if (hit.collider)
             {
-                lr.SetPosition(1, hit.point);
+                lr.SetPosition(1, hit.point - (transform.forward * 0.2f));
+                glowingPoint.transform.position = hit.point;
             }
         }
         else
