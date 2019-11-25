@@ -18,6 +18,12 @@ public class PointerLaser : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!gameObject.transform.parent.gameObject.GetComponent<ArrowMoving>().tfMouseSetting)
+        {
+            glowingPoint.SetActive(false);
+            gameObject.SetActive(false);
+        }
+
         lr.SetPosition(0, transform.position);
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.forward, out hit))

@@ -236,7 +236,7 @@ LineRenderer:
     numCornerVertices: 0
     numCapVertices: 90
     alignment: 0
-    textureMode: 3
+    textureMode: 2
     shadowBias: 0.5
     generateLightingData: 0
   m_UseWorldSpace: 1
@@ -5043,6 +5043,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 787355685988494035}
     m_Modifications:
+    - target: {fileID: 7536110684904490198, guid: 9a9183937ec58a649b797fb243e930fe,
+        type: 3}
+      propertyPath: m_Name
+      value: Arrow
+      objectReference: {fileID: 0}
     - target: {fileID: 6831676297254860485, guid: 9a9183937ec58a649b797fb243e930fe,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5097,11 +5102,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7536110684904490198, guid: 9a9183937ec58a649b797fb243e930fe,
-        type: 3}
-      propertyPath: m_Name
-      value: Arrow
       objectReference: {fileID: 0}
     - target: {fileID: 2786661936703219375, guid: 9a9183937ec58a649b797fb243e930fe,
         type: 3}
