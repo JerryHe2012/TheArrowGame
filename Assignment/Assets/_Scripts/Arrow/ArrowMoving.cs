@@ -137,6 +137,10 @@ public class ArrowMoving : MonoBehaviour
                 {
                     other.gameObject.GetComponent<GlassAction>().ChangePhysic();
                 }
+                else
+                {
+                    other.gameObject.GetComponent<ConfigableBoard>().PlayAnimation();
+                }
             }        
         }
     }

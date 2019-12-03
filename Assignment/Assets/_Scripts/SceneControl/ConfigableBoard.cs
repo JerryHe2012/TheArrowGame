@@ -19,6 +19,8 @@ public class ConfigableBoard : MonoBehaviour
     private bool tfMovable = true;
     [SerializeField]
     private bool tfGlass = false;
+    [SerializeField]
+    private AnimationClip theClip = null;
 
     private MouseManager theMouse;
     private bool tfFirstGrab = true;
@@ -193,5 +195,11 @@ public class ConfigableBoard : MonoBehaviour
         {
             tfColliding = false;
         }
+    }
+
+    public void PlayAnimation()
+    {
+        gameObject.GetComponent<Animation>().clip = theClip;
+        gameObject.GetComponent<Animation>().Play();     
     }
 }
