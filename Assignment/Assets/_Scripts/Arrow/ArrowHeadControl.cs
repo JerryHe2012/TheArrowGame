@@ -44,6 +44,7 @@ public class ArrowHeadControl : MonoBehaviour
             {
                 theArrowHolder.tfFlying = false;
                 GameObject.Find("EffectAudio").GetComponent<AudioControl>().PlayHit();
+                theArrowHolder.gameObject.transform.parent = other.gameObject.transform.parent;
                 if (other.gameObject.tag == "Target")
                 {
                     GameObject.Find("ScoreSystem").GetComponent<ScoreSystem>().AddScore();

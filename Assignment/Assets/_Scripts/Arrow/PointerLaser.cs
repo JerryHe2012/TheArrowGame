@@ -33,7 +33,7 @@ public class PointerLaser : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.forward, out hit))
         {
-            if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Wall"))
+            if (hit.collider.gameObject.layer != LayerMask.NameToLayer("Arrow"))
             {
                 lr.SetPosition(1, hit.point - (transform.forward * 0.2f));
                 glowingPoint.transform.position = hit.point;
