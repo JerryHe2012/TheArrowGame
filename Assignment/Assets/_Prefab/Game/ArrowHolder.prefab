@@ -1,19 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!136 &1939091082975833165
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 53535925430800978}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.05
-  m_Height: 2.2
-  m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 0.97}
 --- !u!1 &787355685988494039
 GameObject:
   m_ObjectHideFlags: 0
@@ -25,7 +11,7 @@ GameObject:
   - component: {fileID: 787355685988494035}
   - component: {fileID: 787355685988494034}
   - component: {fileID: 7316344482458172430}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ArrowHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +79,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 521108218263191444}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RotationHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,7 +111,7 @@ GameObject:
   - component: {fileID: 7010705169023430452}
   - component: {fileID: 509604981145298052}
   - component: {fileID: 4284920010409480549}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Pointer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -254,6 +240,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   glowingPoint: {fileID: 9189512675550508560}
+  thelayerMask:
+    serializedVersion: 2
+    m_Bits: 2048
 --- !u!1 &7478694501991058963
 GameObject:
   m_ObjectHideFlags: 0
@@ -263,7 +252,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 623413537816522476}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ArrowTail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -295,7 +284,7 @@ GameObject:
   - component: {fileID: 8638446172581351639}
   - component: {fileID: 1796416907886383394}
   - component: {fileID: 6355859107997593261}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GlowingPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5043,11 +5032,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 787355685988494035}
     m_Modifications:
-    - target: {fileID: 7536110684904490198, guid: 9a9183937ec58a649b797fb243e930fe,
-        type: 3}
-      propertyPath: m_Name
-      value: Arrow
-      objectReference: {fileID: 0}
     - target: {fileID: 6831676297254860485, guid: 9a9183937ec58a649b797fb243e930fe,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5103,28 +5087,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7536110684904490198, guid: 9a9183937ec58a649b797fb243e930fe,
+        type: 3}
+      propertyPath: m_Name
+      value: Arrow
+      objectReference: {fileID: 0}
     - target: {fileID: 2786661936703219375, guid: 9a9183937ec58a649b797fb243e930fe,
         type: 3}
       propertyPath: theArrowHolder
       value: 
       objectReference: {fileID: 787355685988494034}
-    - target: {fileID: 2786661936703219375, guid: 9a9183937ec58a649b797fb243e930fe,
-        type: 3}
-      propertyPath: physicalCalculateError
-      value: 0.1
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2951321724336615456, guid: 9a9183937ec58a649b797fb243e930fe, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a9183937ec58a649b797fb243e930fe, type: 3}
 --- !u!4 &2983286253726448084 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6831676297254860485, guid: 9a9183937ec58a649b797fb243e930fe,
-    type: 3}
-  m_PrefabInstance: {fileID: 8622210133851590417}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &53535925430800978 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8581060213887016259, guid: 9a9183937ec58a649b797fb243e930fe,
     type: 3}
   m_PrefabInstance: {fileID: 8622210133851590417}
   m_PrefabAsset: {fileID: 0}

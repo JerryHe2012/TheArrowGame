@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4433043268453789811}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: WallPiece
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 4433043269289516508}
   - component: {fileID: 4433043269289516505}
   - component: {fileID: 4433043269289516509}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: WoodWall
   m_TagString: WoodWall
   m_Icon: {fileID: 0}
@@ -100,11 +100,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4433043269289516508}
     m_Modifications:
-    - target: {fileID: 6727993485511405521, guid: 459aaa010cfafe943b2159b86eacee39,
-        type: 3}
-      propertyPath: m_Name
-      value: fence
-      objectReference: {fileID: 0}
     - target: {fileID: 7711846693168897474, guid: 459aaa010cfafe943b2159b86eacee39,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -174,6 +169,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727993485511405521, guid: 459aaa010cfafe943b2159b86eacee39,
+        type: 3}
+      propertyPath: m_Name
+      value: fence
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727993485511405521, guid: 459aaa010cfafe943b2159b86eacee39,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4999686496540597005, guid: 459aaa010cfafe943b2159b86eacee39,
         type: 3}
