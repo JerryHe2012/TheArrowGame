@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using TMPro;
 
-public class LevelManager : MonoBehaviour
+public class TutorialManager : MonoBehaviour
 {
     public bool tfTutorialOn = true;
     public bool tfPause = false;
@@ -33,7 +33,7 @@ public class LevelManager : MonoBehaviour
             GameObject.Find("ArrowSpawn").GetComponent<ArrowSpawning>().previousObject.GetComponent<ArrowMoving>().tfMouseSetting = false;
             if (!theTutoial.activeSelf)
             {
-                theTutoial.SetActive(true);                
+                theTutoial.SetActive(true);
             }
         }
         else
@@ -96,14 +96,4 @@ public class LevelManager : MonoBehaviour
         GameObject.Find("ScoreSystem").GetComponent<ScoreSystem>().RemoveScore();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-
-
-    public void ShowMessageAnimation()
-    {
-        //GameObject.Find("MoveBowMessage").GetComponent<HideLevelLoading>().enabled = true;
-        GameObject.Find("MoveBowMessage").GetComponent<Animation>().Play();
-        GameObject.Find("MoveBowMessage").GetComponent<TutorialMessages>().tfLoadingMessage = true;
-    }
-
-
 }
