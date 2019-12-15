@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7316344482458172430}
   m_Layer: 10
   m_Name: ArrowHolder
-  m_TagString: Untagged
+  m_TagString: Arrow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -240,9 +240,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   glowingPoint: {fileID: 9189512675550508560}
-  thelayerMask:
-    serializedVersion: 2
-    m_Bits: 2048
 --- !u!1 &7478694501991058963
 GameObject:
   m_ObjectHideFlags: 0

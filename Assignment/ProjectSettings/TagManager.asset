@@ -8,6 +8,8 @@ TagManager:
   - Target
   - WoodWall
   - BounceGlass
+  - Arrow
+  - BounceItem
   layers:
   - Default
   - TransparentFX

@@ -1058,9 +1058,10 @@ MonoBehaviour:
   boardLimit: 2
   boardcount: 0
   referText: {fileID: 0}
-  theText: 'Iron Plate:'
+  theText: 'Glass Plate:'
   tfMovable: 0
-  tfGlass: 0
+  tfGlass: 1
+  theClip: {fileID: 0}
 --- !u!114 &5646262326655407203
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -126,7 +126,7 @@ public class ArrowMoving : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if ((other.tag == "BounceBoard" || other.tag == "BounceGlass") && tfFlying)
+        if ((other.tag == "BounceBoard" || other.tag == "BounceGlass" || other.tag == "BounceItem") && tfFlying)
         {
             if (other.gameObject != preBouncePlate)
             {
@@ -137,7 +137,7 @@ public class ArrowMoving : MonoBehaviour
                 {
                     other.gameObject.GetComponent<GlassAction>().ChangePhysic();
                 }
-                else
+                else if (other.tag == "BounceBoard")
                 {
                     other.gameObject.GetComponent<ConfigableBoard>().PlayAnimation();
                 }
