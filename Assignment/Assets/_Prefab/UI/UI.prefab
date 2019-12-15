@@ -4057,9 +4057,11 @@ MonoBehaviour:
   startSceneName: 
   EasyButton: {fileID: 0}
   HardButton: {fileID: 0}
+  TutorialButton: {fileID: 0}
   PracticeButton: {fileID: 0}
   BackButton: {fileID: 0}
   StartButton: {fileID: 0}
+  ContinueButton: {fileID: 0}
   QuitButton: {fileID: 0}
 --- !u!1 &2189449765903328674
 GameObject:
@@ -9031,7 +9033,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Next Level (for testing only)
+  m_text: Next Level
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: f2dcf029949142e28b974630369c8b4e, type: 2}
@@ -9067,7 +9069,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_textAlignment: 514
+  m_textAlignment: 516
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -9101,10 +9103,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 3256590083462869896}
-    characterCount: 29
+    characterCount: 10
     spriteCount: 0
-    spaceCount: 4
-    wordCount: 5
+    spaceCount: 1
+    wordCount: 2
     linkCount: 0
     lineCount: 1
     pageCount: 1

@@ -6,6 +6,7 @@ using TMPro;
 
 public class ArrowSpawning : MonoBehaviour
 {
+    public bool tfCanSpawn = true;
     public GameObject previousObject = null;
     public List<GlassAction> allGlassBoard = new List<GlassAction>();
 
@@ -40,7 +41,7 @@ public class ArrowSpawning : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!previousObject.GetComponent<ArrowMoving>().tfMouseSetting && !GameObject.Find("GeneralManager").GetComponent<LevelManager>().tfPause)
+        if (tfCanSpawn && !previousObject.GetComponent<ArrowMoving>().tfMouseSetting && previousObject.GetComponent<ArrowMoving>().tfshot && !GameObject.Find("GeneralManager").GetComponent<LevelManager>().tfPause)
         {
             if (Input.GetKeyDown(KeyCode.W))
             {

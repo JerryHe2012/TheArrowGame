@@ -14,11 +14,11 @@ public class TutorialManager : MonoBehaviour
     [SerializeField]
     private GameObject tileRotation = null;
 
-    private bool disableShoot1 = true;
-    private bool disableShoot2 = false;
+    private bool disableShoot = true;
     private bool isOnFreeRotation = false;
 
     private bool firstStepDone = false;
+    private bool secondStepDone = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,19 +27,19 @@ public class TutorialManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(disableShoot1)
+        if(disableShoot)
         {
-            GameObject.Find("ArrowHolder").GetComponent<ArrowMoving>().tfMouseSetting = false;
-            Invoke("enableArrow", 4);
+            GameObject.Find("ArrowSpawn").GetComponent<ArrowSpawning>().tfCanSpawn = false;
+            Invoke("enableArrow", 3);
         }
-        if (Input.GetMouseButtonDown(1) && !firstStepDone && !disableShoot1)
+        if (Input.GetMouseButtonDown(1) && !firstStepDone && !disableShoot)
         {
             tutorialManager.SetActive(true);
             GameObject.Find("MoveBowText (TMP)").GetComponent<TextMeshProUGUI>().text = "Nice, now lets try using some tiles!";
             GameObject.Find("MoveBowText (TMP)").GetComponent<TextMeshProUGUI>().alpha = 255;
             GameObject.Find("MoveBowMessage").GetComponent<Animation>().Play();
-            Invoke("RespawnTile", 2);
-            GameObject.Find("ArrowHolder").GetComponent<ArrowMoving>().tfMouseSetting = false;
+            Invoke("RespawnTile", 3);
+            GameObject.Find("ArrowSpawn").GetComponent<ArrowSpawning>().tfCanSpawn = false;
             firstStepDone = true;
         }
 
@@ -48,23 +48,20 @@ public class TutorialManager : MonoBehaviour
         {
 
             tutorialManager.SetActive(true);
-            GameObject.Find("ArrowHolder").GetComponent<ArrowMoving>().tfMouseSetting = true;
+            GameObject.Find("ArrowSpawn").GetComponent<ArrowSpawning>().tfCanSpawn = true;
             GameObject.Find("MoveBowText (TMP)").GetComponent<TextMeshProUGUI>().text = "Great, now get a new arrow by pressing the 'w' key";
             GameObject.Find("MoveBowText (TMP)").GetComponent<TextMeshProUGUI>().alpha = 255;
             GameObject.Find("MoveBowMessage").GetComponent<Animation>().Play();
-            disableShoot2 = true;
             GameObject.Find("TutorialInstructionsText").GetComponent<TextMeshProUGUI>().text = "1. Press the 'W' key to get a new arrow\n2. Aim arrow at the tile\n3. Hit the target!";
-        
-
-        isOnFreeRotation = false;
+            isOnFreeRotation = false;
+            secondStepDone = true;
         }
-
     }
 
     void enableArrow()
     {
-        GameObject.Find("ArrowHolder").GetComponent<ArrowMoving>().tfMouseSetting = true;
-        disableShoot1 = false;
+        GameObject.Find("ArrowSpawn").GetComponent<ArrowSpawning>().tfCanSpawn = true;
+        disableShoot = false;
     }
 
 
@@ -78,8 +75,10 @@ public class TutorialManager : MonoBehaviour
 
     public void OnFreeRotationClick()
     {
-        Debug.Log("YOOOOOOOOOOOOOOOOOOO");
-        isOnFreeRotation = true;
+        if(!secondStepDone)
+        {
+            isOnFreeRotation = true;
+        }
     }
 
 

@@ -4,13 +4,7 @@ using UnityEngine;
 
 public class TutorialMessages : MonoBehaviour
 {
-
-
     public bool tfLoadingMessage = false;
-    [SerializeField]
-    bool tfTutorialOn = false;
-    [SerializeField]
-    LevelManager levelManager = null;
 
     // Start is called before the first frame update
     void Start()

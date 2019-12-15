@@ -13,6 +13,8 @@ public class MenuButton : MonoBehaviour
     [SerializeField]
     private GameObject HardButton = null;
     [SerializeField]
+    private GameObject TutorialButton = null;
+    [SerializeField]
     private GameObject PracticeButton = null;
     [SerializeField]
     private GameObject BackButton = null;
@@ -64,11 +66,18 @@ public class MenuButton : MonoBehaviour
         StartGame();
     }
 
+    public void SetTutorial()
+    {
+        GameObject.Find("GameMode").GetComponent<GameMode>().mode = GameMode.GameType.Practice;
+        SceneManager.LoadScene("Tutorial");
+    }
+
     public void StartButtonOp()
     {
         StartButton.SetActive(false);
         QuitButton.SetActive(false);
         ContinueButton.SetActive(false);
+        TutorialButton.SetActive(true);
         EasyButton.SetActive(true);
         HardButton.SetActive(true);
         PracticeButton.SetActive(true);
@@ -80,6 +89,7 @@ public class MenuButton : MonoBehaviour
         StartButton.SetActive(true);
         QuitButton.SetActive(true);
         ContinueButton.SetActive(true);
+        TutorialButton.SetActive(false);
         EasyButton.SetActive(false);
         HardButton.SetActive(false);
         PracticeButton.SetActive(false);

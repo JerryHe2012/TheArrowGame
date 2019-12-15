@@ -15,6 +15,8 @@ public class BackgroundMusicScript : MonoBehaviour
     private AudioClip secondBG = null;
     [SerializeField]
     private AudioClip thirdBG = null;
+    [SerializeField]
+    private AudioClip fourthBG = null;
 
     [SerializeField]
     private string firstSceneName = "";
@@ -22,6 +24,8 @@ public class BackgroundMusicScript : MonoBehaviour
     private string secondSceneName = "";
     [SerializeField]
     private string thirdSceneName = "";
+    [SerializeField]
+    private string fourthSceneName = "";
 
 
     private AudioSource theAudioSource = null;
@@ -33,6 +37,13 @@ public class BackgroundMusicScript : MonoBehaviour
 
     void Awake()
     {
+        GameObject[] objs = GameObject.FindGameObjectsWithTag("GameBGM");
+
+        if (objs.Length > 1)
+        {
+            Destroy(this.gameObject);
+        }
+
         theAudioSource = gameObject.GetComponent<AudioSource>();
         DontDestroyOnLoad(this.gameObject);
     }
@@ -45,7 +56,18 @@ public class BackgroundMusicScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (SceneManager.GetActiveScene().name == firstSceneName)
+        if (SceneManager.GetActiveScene().name == "MainMenu")
+        {
+            if (!theAudioSource.clip != MenuBG)
+            {
+                theAudioSource.clip = MenuBG;
+                if (!theAudioSource.isPlaying)
+                {
+                    theAudioSource.Play();
+                }
+            }
+        }
+        else if (SceneManager.GetActiveScene().name == firstSceneName)
         {
             if (!tfAudioChanged)
             {
@@ -75,6 +97,18 @@ public class BackgroundMusicScript : MonoBehaviour
             {
                 tfAudioChanged = true;
                 theAudioSource.clip = thirdBG;
+                if (!theAudioSource.isPlaying)
+                {
+                    theAudioSource.Play();
+                }
+            }
+        }
+        else if (SceneManager.GetActiveScene().name == fourthSceneName)
+        {
+            if (!tfAudioChanged)
+            {
+                tfAudioChanged = true;
+                theAudioSource.clip = fourthBG;
                 if (!theAudioSource.isPlaying)
                 {
                     theAudioSource.Play();

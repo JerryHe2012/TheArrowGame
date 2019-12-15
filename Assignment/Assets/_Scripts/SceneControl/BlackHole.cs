@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BlackHole : MonoBehaviour
 {
@@ -23,7 +24,10 @@ public class BlackHole : MonoBehaviour
         {
             theArrow = GameObject.Find("ArrowSpawn").GetComponent<ArrowSpawning>().previousObject;
         }
+    }
 
+    void FixedUpdate()
+    {
         if (theArrow.GetComponent<ArrowMoving>().tfFlying)
         {
             float theDistance = Vector3.Distance(theArrow.transform.position, gameObject.transform.position);

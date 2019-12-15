@@ -7,14 +7,14 @@ public class ArrowMoving : MonoBehaviour
     public float speed = 10;
     public float forceLimit = 0.76f;
     public float minCheck = 0.25f;
+    public bool tfshot = false;
     public bool tfFlying = true;
     public bool tfWillBounce = false;
     public bool tfMouseSetting = true;
 
     [SerializeField]
-    private float speedScale = 10.0f;    
+    private float speedScale = 10.0f;   
 
-    private bool tfshot = false;    
     private GameObject preBouncePlate = null;
     private GameObject theBow = null;
     private GameObject theRope = null;
