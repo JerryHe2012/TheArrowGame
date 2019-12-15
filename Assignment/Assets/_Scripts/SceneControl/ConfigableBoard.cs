@@ -9,6 +9,7 @@ public class ConfigableBoard : MonoBehaviour
     public float rotateAngle = 45.0f;
     public float rotateSpeed = 100.0f;
     public int boardLimit = 2;
+    public int hardLimit = 2;
     public int boardcount = 0;
 
     [SerializeField]
@@ -32,6 +33,20 @@ public class ConfigableBoard : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (boardLimit == 0)
+        {
+            gameObject.SetActive(false);
+        }
+
+        if (GameObject.Find("GameMode").GetComponent<GameMode>().mode == GameMode.GameType.Hard)
+        {
+            boardLimit = hardLimit;
+        }
+        else if (GameObject.Find("GameMode").GetComponent<GameMode>().mode == GameMode.GameType.Practice)
+        {
+            boardLimit = 99;
+        }
+
         theMouse = GameObject.Find("MouseManager").GetComponent<MouseManager>();
         if (tfGlass)
         {

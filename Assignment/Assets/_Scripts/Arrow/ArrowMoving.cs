@@ -137,7 +137,7 @@ public class ArrowMoving : MonoBehaviour
                 {
                     other.gameObject.GetComponent<GlassAction>().ChangePhysic();
                 }
-                else if (other.tag == "BounceBoard")
+                else if (other.gameObject.tag == "BounceBoard")
                 {
                     other.gameObject.GetComponent<ConfigableBoard>().PlayAnimation();
                 }

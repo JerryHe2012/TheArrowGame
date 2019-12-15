@@ -10,15 +10,28 @@ public class ArrowSpawning : MonoBehaviour
     public List<GlassAction> allGlassBoard = new List<GlassAction>();
 
     [SerializeField]
+    private ButtonTrigger[] Buttons = null;
+    [SerializeField]
     private GameObject thePreFab = null;
     [SerializeField]
     private int totalArrowCount = 0;
     [SerializeField]
     private int stageArrowLimit = 6;
+    [SerializeField]
+    private int hardStageArrowLimit = 6;
 
     // Start is called before the first frame update
     void Start()
     {
+        if (GameObject.Find("GameMode").GetComponent<GameMode>().mode == GameMode.GameType.Hard)
+        {
+            stageArrowLimit = hardStageArrowLimit;
+        }
+        else if (GameObject.Find("GameMode").GetComponent<GameMode>().mode == GameMode.GameType.Practice)
+        {
+            stageArrowLimit = 99;
+        }
+
         previousObject = GameObject.Find("ArrowHolder");
         GameObject.Find("ArrowText").GetComponent<TextMeshProUGUI>().text = "Arrow: " + totalArrowCount + "/" + stageArrowLimit;
         GameObject.Find("ScoreSystem").GetComponent<ScoreSystem>().arrowLeft = stageArrowLimit - totalArrowCount;
@@ -38,6 +51,10 @@ public class ArrowSpawning : MonoBehaviour
                     foreach (GlassAction theGlass in allGlassBoard)
                     {
                         theGlass.ReversePosition();
+                    }
+                    foreach (ButtonTrigger bt in Buttons)
+                    {
+                        bt.ChangeBack();
                     }
                 }
                 else

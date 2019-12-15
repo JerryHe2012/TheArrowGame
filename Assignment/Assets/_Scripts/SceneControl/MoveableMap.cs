@@ -48,6 +48,10 @@ public class MoveableMap : MonoBehaviour
             {
                 gameObject.transform.localPosition = Vector3.MoveTowards(gameObject.transform.localPosition, targetPosition, Time.deltaTime * speed);
             }
+            else
+            {
+                gameObject.transform.localPosition = Vector3.MoveTowards(gameObject.transform.localPosition, originalPosition, Time.deltaTime * speed);
+            }
         }
         else
         {
@@ -107,5 +111,10 @@ public class MoveableMap : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void MoveBack()
+    {
+        tfTriggered = false;
     }
 }

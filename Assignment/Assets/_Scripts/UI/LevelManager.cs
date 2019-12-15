@@ -96,4 +96,10 @@ public class LevelManager : MonoBehaviour
         GameObject.Find("ScoreSystem").GetComponent<ScoreSystem>().RemoveScore();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
+    public void BackToMain()
+    {
+        GameObject.Find("GameMode").GetComponent<GameMode>().memoryStage = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene("MainMenu");
+    }
 }

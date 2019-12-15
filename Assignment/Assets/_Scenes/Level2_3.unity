@@ -98,7 +98,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
   m_LightingDataAsset: {fileID: 112000000, guid: ae6de6a354c6fd246a8b518aa3bb823e,
     type: 2}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -11038,10 +11038,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   previousObject: {fileID: 0}
   allGlassBoard: []
+  Buttons: []
   thePreFab: {fileID: 787355685988494039, guid: 306df27ca6159db40837e03e25d5bb6b,
     type: 3}
   totalArrowCount: 0
-  stageArrowLimit: 6
+  stageArrowLimit: 4
+  hardStageArrowLimit: 2
 --- !u!1001 &1404631873
 PrefabInstance:
   m_ObjectHideFlags: 0

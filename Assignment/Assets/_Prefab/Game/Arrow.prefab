@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   theArrowHolder: {fileID: 0}
-  physicalCalculateError: 0.1
+  physicalCalculateError: 0.25
   timeCounter: 0
 --- !u!136 &1939091082975833165
 CapsuleCollider:

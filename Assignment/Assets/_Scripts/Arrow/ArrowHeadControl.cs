@@ -7,7 +7,7 @@ public class ArrowHeadControl : MonoBehaviour
     public ArrowMoving theArrowHolder;
 
     [SerializeField]
-    private float physicalCalculateError = 0.5f;
+    private float physicalCalculateError = 0.25f;
     [SerializeField]
     private float timeCounter = 0;
 
@@ -34,7 +34,7 @@ public class ArrowHeadControl : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if ((other.tag == "BounceBoard" || other.tag == "BounceGlass"))
+        if (other.tag == "BounceBoard" || other.tag == "BounceGlass" || other.tag == "BounceItem")
         {
             canhit = false;
         }
@@ -58,7 +58,7 @@ public class ArrowHeadControl : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if ((other.tag == "BounceBoard" || other.tag == "BounceGlass"))
+        if (other.tag == "BounceBoard" || other.tag == "BounceGlass" || other.tag == "BounceItem")
         {
             canhit = false;
         }
@@ -66,7 +66,7 @@ public class ArrowHeadControl : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if ((other.tag == "BounceBoard" || other.tag == "BounceGlass"))
+        if (other.tag == "BounceBoard" || other.tag == "BounceGlass" || other.tag == "BounceItem")
         {
             canhit = true;
         }

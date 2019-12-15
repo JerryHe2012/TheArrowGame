@@ -9788,7 +9788,7 @@ PrefabInstance:
     - target: {fileID: 1324734158677496473, guid: 93ce89d11eb2b7345a8fd16f3d4c7b73,
         type: 3}
       propertyPath: boardLimit
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1324734158677496473, guid: 93ce89d11eb2b7345a8fd16f3d4c7b73,
         type: 3}
@@ -10030,10 +10030,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   previousObject: {fileID: 0}
   allGlassBoard: []
+  Buttons: []
   thePreFab: {fileID: 787355685988494039, guid: 306df27ca6159db40837e03e25d5bb6b,
     type: 3}
   totalArrowCount: 0
-  stageArrowLimit: 8
+  stageArrowLimit: 5
+  hardStageArrowLimit: 5
 --- !u!1001 &1398126838
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14732,6 +14734,11 @@ PrefabInstance:
       propertyPath: nextLevel
       value: Level2_1
       objectReference: {fileID: 0}
+    - target: {fileID: 5095339706222702870, guid: a37408e0ff332ce4aaca305fad634e9b,
+        type: 3}
+      propertyPath: tfTutorialOn
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9036031432675231640, guid: a37408e0ff332ce4aaca305fad634e9b,
         type: 3}
       propertyPath: m_text
@@ -14751,11 +14758,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textInfo.wordCount
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5095339706222702870, guid: a37408e0ff332ce4aaca305fad634e9b,
-        type: 3}
-      propertyPath: tfTutorialOn
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a37408e0ff332ce4aaca305fad634e9b, type: 3}

@@ -2248,6 +2248,16 @@ PrefabInstance:
       propertyPath: theText
       value: 'Glass Plate:'
       objectReference: {fileID: 0}
+    - target: {fileID: 2697388294498224480, guid: 02d6fd87caf7e1f49b3ef3498bfbcc9d,
+        type: 3}
+      propertyPath: hardLimit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2697388294498224480, guid: 02d6fd87caf7e1f49b3ef3498bfbcc9d,
+        type: 3}
+      propertyPath: boardLimit
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02d6fd87caf7e1f49b3ef3498bfbcc9d, type: 3}
 --- !u!4 &672069093 stripped
@@ -4807,10 +4817,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   previousObject: {fileID: 0}
   allGlassBoard: []
+  Buttons:
+  - {fileID: 4701965188997839685}
   thePreFab: {fileID: 787355685988494039, guid: 306df27ca6159db40837e03e25d5bb6b,
     type: 3}
   totalArrowCount: 0
   stageArrowLimit: 3
+  hardStageArrowLimit: 1
 --- !u!1001 &1404631873
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5243,6 +5256,16 @@ PrefabInstance:
       propertyPath: referText
       value: 
       objectReference: {fileID: 1160558551}
+    - target: {fileID: 1324734158677496473, guid: 93ce89d11eb2b7345a8fd16f3d4c7b73,
+        type: 3}
+      propertyPath: hardLimit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324734158677496473, guid: 93ce89d11eb2b7345a8fd16f3d4c7b73,
+        type: 3}
+      propertyPath: boardLimit
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93ce89d11eb2b7345a8fd16f3d4c7b73, type: 3}
 --- !u!4 &1439383296 stripped
@@ -5472,9 +5495,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tfTriggered: 0
+  tfTrigger: 1
   targetPosition: {x: -2, y: 0, z: 0}
   speed: 2
-  tfTrigger: 1
+  tfWait: 0
+  tfWaiting: 0
+  waitingTime: 2
+  tfStartWaiting: 0
+  startWaitingTime: 2
+  tfReachWait: 0
+  tfReachWaiting: 0
+  reachWaitingTime: 0
 --- !u!1001 &1574000567
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6816,7 +6847,7 @@ PrefabInstance:
     - target: {fileID: 2189449765901557892, guid: a37408e0ff332ce4aaca305fad634e9b,
         type: 3}
       propertyPath: nextLevel
-      value: Level2_2
+      value: Level5_2
       objectReference: {fileID: 0}
     - target: {fileID: 2189449765901557892, guid: a37408e0ff332ce4aaca305fad634e9b,
         type: 3}
@@ -6826,17 +6857,17 @@ PrefabInstance:
     - target: {fileID: 9036031432675231640, guid: a37408e0ff332ce4aaca305fad634e9b,
         type: 3}
       propertyPath: m_text
-      value: Break Glass
+      value: A Button
       objectReference: {fileID: 0}
     - target: {fileID: 9036031432675231640, guid: a37408e0ff332ce4aaca305fad634e9b,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 11
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 9036031432675231640, guid: a37408e0ff332ce4aaca305fad634e9b,
         type: 3}
       propertyPath: m_textInfo.spaceCount
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9036031432675231640, guid: a37408e0ff332ce4aaca305fad634e9b,
         type: 3}
@@ -8646,9 +8677,26 @@ PrefabInstance:
         type: 3}
       propertyPath: triggerDoor
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 310039604906127371, guid: a01aa12ffc6ea2d4993ad5735e669d91,
+        type: 3}
+      propertyPath: triggerDoor.Array.data[0]
+      value: 
       objectReference: {fileID: 1530492480}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a01aa12ffc6ea2d4993ad5735e669d91, type: 3}
+--- !u!114 &4701965188997839685 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 310039604906127371, guid: a01aa12ffc6ea2d4993ad5735e669d91,
+    type: 3}
+  m_PrefabInstance: {fileID: 4701965188997839684}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8102096767821086059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f1cd8dda06eb4e47a05b003b0ee243a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &5056196362581184376 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 534674504080815164, guid: a01aa12ffc6ea2d4993ad5735e669d91,
