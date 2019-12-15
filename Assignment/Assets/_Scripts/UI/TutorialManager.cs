@@ -47,21 +47,16 @@ public class TutorialManager : MonoBehaviour
         if(isOnFreeRotation && Input.GetMouseButtonDown(0))
         {
 
-            Debug.Log("loooooooooooooool");
+            tutorialManager.SetActive(true);
             GameObject.Find("ArrowHolder").GetComponent<ArrowMoving>().tfMouseSetting = true;
             GameObject.Find("MoveBowText (TMP)").GetComponent<TextMeshProUGUI>().text = "Great, now get a new arrow by pressing the 'w' key";
             GameObject.Find("MoveBowText (TMP)").GetComponent<TextMeshProUGUI>().alpha = 255;
             GameObject.Find("MoveBowMessage").GetComponent<Animation>().Play();
             disableShoot2 = true;
+            GameObject.Find("TutorialInstructionsText").GetComponent<TextMeshProUGUI>().text = "1. Press the 'W' key to get a new arrow\n2. Aim arrow at the tile\n3. Hit the target!";
+        
 
-
-            isOnFreeRotation = false;
-        }
-
-        //this seems kinda buggy
-        if(!disableShoot2)
-        {
-            GameObject.Find("ArrowHolder").GetComponent<ArrowMoving>().tfMouseSetting = false;
+        isOnFreeRotation = false;
         }
 
     }
