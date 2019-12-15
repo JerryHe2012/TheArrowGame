@@ -101,8 +101,10 @@ public class LevelManager : MonoBehaviour
     public void ShowMessageAnimation()
     {
         //GameObject.Find("MoveBowMessage").GetComponent<HideLevelLoading>().enabled = true;
+        GameObject.Find("MoveBowText (TMP)").GetComponent<TextMeshProUGUI>().alpha = 255;
         GameObject.Find("MoveBowMessage").GetComponent<Animation>().Play();
         GameObject.Find("MoveBowMessage").GetComponent<TutorialMessages>().tfLoadingMessage = true;
+        GameObject.Find("TutorialInstructionsText").GetComponent<TextMeshProUGUI>().alpha = 255;
     }
 
 

@@ -7,18 +7,18 @@ using TMPro;
 
 public class TutorialManager : MonoBehaviour
 {
-    public bool tfTutorialOn = true;
-    public bool tfPause = false;
 
     [SerializeField]
-    private GameObject Menu = null;
-    [SerializeField]
-    private GameObject WinMenu = null;
-    [SerializeField]
-    private GameObject theTutoial = null;
-    [SerializeField]
-    private string nextLevel = "Level2";
+    private GameObject tutorialManager = null;
 
+    [SerializeField]
+    private GameObject tileRotation = null;
+
+    private bool disableShoot1 = true;
+    private bool disableShoot2 = false;
+    private bool isOnFreeRotation = false;
+
+    private bool firstStepDone = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,73 +27,65 @@ public class TutorialManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (tfTutorialOn)
+        if(disableShoot1)
         {
-            tfPause = true;
-            GameObject.Find("ArrowSpawn").GetComponent<ArrowSpawning>().previousObject.GetComponent<ArrowMoving>().tfMouseSetting = false;
-            if (!theTutoial.activeSelf)
-            {
-                theTutoial.SetActive(true);
-            }
+            GameObject.Find("ArrowHolder").GetComponent<ArrowMoving>().tfMouseSetting = false;
+            Invoke("enableArrow", 4);
         }
-        else
+        if (Input.GetMouseButtonDown(1) && !firstStepDone && !disableShoot1)
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                if (Menu.activeSelf)
-                {
-                    ResumeGame();
-                }
-                else
-                {
-                    Menu.SetActive(true);
-                    tfPause = true;
-                    GameObject.Find("ArrowSpawn").GetComponent<ArrowSpawning>().previousObject.GetComponent<ArrowMoving>().tfMouseSetting = false;
-                }
-            }
+            tutorialManager.SetActive(true);
+            GameObject.Find("MoveBowText (TMP)").GetComponent<TextMeshProUGUI>().text = "Nice, now lets try using some tiles!";
+            GameObject.Find("MoveBowText (TMP)").GetComponent<TextMeshProUGUI>().alpha = 255;
+            GameObject.Find("MoveBowMessage").GetComponent<Animation>().Play();
+            Invoke("RespawnTile", 2);
+            GameObject.Find("ArrowHolder").GetComponent<ArrowMoving>().tfMouseSetting = false;
+            firstStepDone = true;
         }
-    }
 
-    public void OpenTutorial()
-    {
-        if (!tfPause)
+        //need to fix the condition on this if
+        if(isOnFreeRotation && Input.GetMouseButtonDown(0))
         {
-            tfTutorialOn = true;
+
+            Debug.Log("loooooooooooooool");
+            GameObject.Find("ArrowHolder").GetComponent<ArrowMoving>().tfMouseSetting = true;
+            GameObject.Find("MoveBowText (TMP)").GetComponent<TextMeshProUGUI>().text = "Great, now get a new arrow by pressing the 'w' key";
+            GameObject.Find("MoveBowText (TMP)").GetComponent<TextMeshProUGUI>().alpha = 255;
+            GameObject.Find("MoveBowMessage").GetComponent<Animation>().Play();
+            disableShoot2 = true;
+
+
+            isOnFreeRotation = false;
         }
-        EventSystem.current.SetSelectedGameObject(null);
+
+        //this seems kinda buggy
+        if(!disableShoot2)
+        {
+            GameObject.Find("ArrowHolder").GetComponent<ArrowMoving>().tfMouseSetting = false;
+        }
+
     }
 
-    public void CloseTutorial()
+    void enableArrow()
     {
-        tfTutorialOn = false;
-        tfPause = false;
-        theTutoial.SetActive(false);
-        GameObject.Find("ArrowSpawn").GetComponent<ArrowSpawning>().previousObject.GetComponent<ArrowMoving>().tfMouseSetting = true;
+        GameObject.Find("ArrowHolder").GetComponent<ArrowMoving>().tfMouseSetting = true;
+        disableShoot1 = false;
     }
 
-    public void WinOption()
+
+    void RespawnTile()
     {
-        GameObject.Find("ArrowSpawn").GetComponent<ArrowSpawning>().previousObject.GetComponent<ArrowMoving>().tfMouseSetting = false;
-        WinMenu.SetActive(true);
+        GameObject.Find("ItemHolder").transform.localScale = new Vector3(1, 1, 1);
+        tileRotation.SetActive(true);
+        GameObject.Find("TutorialInstructionsText").GetComponent<TextMeshProUGUI>().text = "1. Pick up a tile using left mouse button\n2. rotate the tile using 'q'and 'e' keys\n3. Change rotation settings to 'free rotation'";
     }
 
-    public void ResumeGame()
+
+    public void OnFreeRotationClick()
     {
-        Menu.SetActive(false);
-        WinMenu.SetActive(false);
-        tfPause = false;
-        GameObject.Find("ArrowSpawn").GetComponent<ArrowSpawning>().previousObject.GetComponent<ArrowMoving>().tfMouseSetting = true;
-        EventSystem.current.SetSelectedGameObject(null);
+        Debug.Log("YOOOOOOOOOOOOOOOOOOO");
+        isOnFreeRotation = true;
     }
 
-    public void ProcessToNextLevel()
-    {
-        SceneManager.LoadScene(nextLevel);
-    }
 
-    public void RestartLevel()
-    {
-        GameObject.Find("ScoreSystem").GetComponent<ScoreSystem>().RemoveScore();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
 }
