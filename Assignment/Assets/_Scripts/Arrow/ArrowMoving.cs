@@ -114,7 +114,14 @@ public class ArrowMoving : MonoBehaviour
             {
                 float difference = gameObject.transform.eulerAngles.y - preBouncePlate.transform.eulerAngles.y;
                 gameObject.transform.eulerAngles = new Vector3(0, preBouncePlate.transform.eulerAngles.y + 180.0f - difference, 0);
-                GameObject.Find("EffectAudio").GetComponent<AudioControl>().PlayHitIron();
+                if (preBouncePlate.tag == "BounceBoard")
+                {
+                    GameObject.Find("EffectAudio").GetComponent<AudioControl>().PlayHitIron();
+                }
+                else if (preBouncePlate.tag == "BounceGlass")
+                {
+                    GameObject.Find("EffectAudio").GetComponent<AudioControl>().PlayHitGlass();
+                }
                 tfWillBounce = false;
             }
             else

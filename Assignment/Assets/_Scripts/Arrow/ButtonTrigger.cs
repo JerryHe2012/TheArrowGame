@@ -32,6 +32,7 @@ public class ButtonTrigger : MonoBehaviour
             Material[] mats = gameObject.GetComponent<MeshRenderer>().materials;
             mats[1] = green;
             gameObject.GetComponent<MeshRenderer>().materials = mats;
+            GameObject.Find("EffectAudio").GetComponent<AudioControl>().PlayHitButton();
             if (triggerDoor != null)
             {
                 foreach (MoveableMap td in triggerDoor)

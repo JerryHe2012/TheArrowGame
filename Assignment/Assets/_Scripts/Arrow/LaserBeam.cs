@@ -26,6 +26,7 @@ public class LaserBeam : MonoBehaviour
             {
                 other.gameObject.SetActive(false);
                 gameObject.transform.Find("particle").GetComponent<ParticleSystem>().Play();
+                GameObject.Find("EffectAudio").GetComponent<AudioControl>().PlayHitLaser();
             }
         }
     }

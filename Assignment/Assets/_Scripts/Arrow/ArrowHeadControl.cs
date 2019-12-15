@@ -38,22 +38,6 @@ public class ArrowHeadControl : MonoBehaviour
         {
             canhit = false;
         }
-        else
-        {
-            if ((other.gameObject.tag == "Target" || other.gameObject.tag == "WoodWall") && !theArrowHolder.tfWillBounce && theArrowHolder.tfFlying && canhit)
-            {
-                theArrowHolder.tfFlying = false;
-                GameObject.Find("EffectAudio").GetComponent<AudioControl>().PlayHit();
-                theArrowHolder.gameObject.transform.parent = other.gameObject.transform.parent;
-                if (other.gameObject.tag == "Target")
-                {
-                    GameObject.Find("ScoreSystem").GetComponent<ScoreSystem>().AddScore();
-                    GameObject.Find("GeneralManager").GetComponent<LevelManager>().tfPause = true;
-                    GameObject.Find("Message").GetComponent<ErrorMessage>().displayHitTarget();
-                    hit = true;
-                }
-            }
-        }
     }
 
     private void OnTriggerStay(Collider other)
@@ -61,6 +45,20 @@ public class ArrowHeadControl : MonoBehaviour
         if (other.tag == "BounceBoard" || other.tag == "BounceGlass" || other.tag == "BounceItem")
         {
             canhit = false;
+        }
+
+        if ((other.gameObject.tag == "Target" || other.gameObject.tag == "WoodWall") && !theArrowHolder.tfWillBounce && theArrowHolder.tfFlying && canhit)
+        {
+            theArrowHolder.tfFlying = false;
+            GameObject.Find("EffectAudio").GetComponent<AudioControl>().PlayHit();
+            theArrowHolder.gameObject.transform.parent = other.gameObject.transform.parent;
+            if (other.gameObject.tag == "Target")
+            {
+                GameObject.Find("ScoreSystem").GetComponent<ScoreSystem>().AddScore();
+                GameObject.Find("GeneralManager").GetComponent<LevelManager>().tfPause = true;
+                GameObject.Find("Message").GetComponent<ErrorMessage>().displayHitTarget();
+                hit = true;
+            }
         }
     }
 

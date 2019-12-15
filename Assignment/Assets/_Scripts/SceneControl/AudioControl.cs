@@ -12,6 +12,10 @@ public class AudioControl : MonoBehaviour
     private AudioClip IronHit = null;
     [SerializeField]
     private AudioClip GlassHit = null;
+    [SerializeField]
+    private AudioClip ButtonHit = null;
+    [SerializeField]
+    private AudioClip LaserHit = null;
 
     private AudioSource theSource = null;
     // Start is called before the first frame update
@@ -50,6 +54,20 @@ public class AudioControl : MonoBehaviour
     public void PlayHitGlass()
     {
         theSource.clip = GlassHit;
+        theSource.volume = 0.3f;
+        theSource.Play();
+    }
+
+    public void PlayHitButton()
+    {
+        theSource.clip = ButtonHit;
+        theSource.volume = 1f;
+        theSource.Play();
+    }
+
+    public void PlayHitLaser()
+    {
+        theSource.clip = LaserHit;
         theSource.volume = 0.3f;
         theSource.Play();
     }
